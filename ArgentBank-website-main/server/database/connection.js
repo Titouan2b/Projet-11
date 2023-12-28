@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 const databaseUrl =
-  process.env.DATABASE_URL || 'mongodb://localhost/argentBankDB'
+  process.env.DATABASE_URL || 'mongodb+srv://Titouan:Corsica2b@titouan.eftfg3s.mongodb.net/?retryWrites=true&w=majority'
 
 module.exports = async () => {
   try {
-    await mongoose.connect(databaseUrl, { useNewUrlParser: true })
+    await mongoose.connect(`mongodb+srv://Titouan:Corsica2b@titouan.eftfg3s.mongodb.net/?retryWrites=true&w=majority`, { useNewUrlParser: true })
     console.log('Database successfully connected')
   } catch (error) {
     console.error(`Database Connectivity Error: ${error}`)
