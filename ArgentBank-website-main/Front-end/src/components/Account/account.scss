@@ -47,6 +47,13 @@
     color: #fff;
     margin-bottom: 2rem;
   }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   
   .transaction-button {
     display: block;
