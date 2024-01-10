@@ -11,10 +11,22 @@
    a.router-link-exact-active {
     color: #42b983;
   }
+
+  .nav-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 }
   .main-nav-item {
     text-decoration: none;
     margin-right: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
   
   .main-nav-item:hover {

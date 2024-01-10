@@ -2,17 +2,16 @@ import React, { useState } from 'react'
 import "./header.scss"
 import ArgentBankLogo from "./../../assets/img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteData } from '../../redux/reducers/userSlice'
 
 
 export default function Header() {
     const [login, setLogin] = useState(true)
     const [logout, setLogout] = useState(false)
-
-    const toggleVisibility = () => {
-        setLogout(!login)
-        setLogin(!logout)
-    }
-
+    const token = useSelector((state) => state.auth.token)
+    const userData = useSelector((state) => state.user)
+    const dispatch = useDispatch()
 
   return (
     <nav className="main-nav">
@@ -24,13 +23,23 @@ export default function Header() {
             />
             <h1 className="sr-only">Argent Bank</h1>
         </Link>
-        <div>
-        {login && <Link className="main-nav-item login" to="/sign-in" onClick={toggleVisibility} >
-                <i className="fa fa-user-circle"></i>
-                <p>Sign In</p>
-            </Link>}
-            {logout && <Link className='main-nav-item logout' to="/" onClick={toggleVisibility}><p>Logout</p></Link>}
-            {logout && <p>{firstName}</p>}
+        <div className='nav-right'>
+            {token ? (
+                <>
+                    <Link className="main-nav-item" to="/user" >
+                        <p className='main-nav-item'>{userData.firstName}</p>
+                    </Link>
+                    <Link className='main-nav-item' to="/" onClick={() => {
+                        dispatch(logout())
+                        dispatch(deleteData())
+                    }}><p>Logout</p></Link>
+                </>
+            ) : (
+                <Link className="main-nav-item" to="/sign-in">
+                    <i className="fa fa-user-circle"></i>
+                    <p>Sign In</p>
+                </Link>
+            )}
         </div>
     </nav>
   )

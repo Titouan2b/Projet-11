@@ -18,8 +18,14 @@ export const userSlice = createSlice({
         },
         editUserName: (state, action) => {
             state.userName = action.payload
+        },
+        deleteData: (state) => {
+            state.email = ""
+            state.firstName = ""
+            state.lastName = ""
+            state.userName = ""
         }
     }
 })
 
-export const {addUserData, editUserName} = userSlice.actions
+export const {addUserData, editUserName, deleteData} = userSlice.actions
