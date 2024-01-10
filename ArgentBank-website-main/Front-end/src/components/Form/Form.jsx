@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import "./form.scss"
-// import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { loginUser } from "../../redux/reducers/authSlice"
@@ -13,7 +12,6 @@ export default function Form() {
   
   async function edit(event, name, password){
     event.preventDefault()
-    console.log(name)
     try{
       const loginData = {
         email: name,
@@ -35,7 +33,6 @@ export default function Form() {
       }
       const sendLoginResponse = await sendLogin.json()
       const token = sendLoginResponse.body.token
-      console.log(token)
       dispatch(loginUser({token}))
       navigate("/user")
     }catch(error){

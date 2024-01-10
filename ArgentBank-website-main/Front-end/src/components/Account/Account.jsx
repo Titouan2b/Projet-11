@@ -9,7 +9,6 @@ export default function Account() {
   const [newUserName, setNewUserName] = useState('')
   const token = useSelector((state) => state.auth.token)
   const userData = useSelector((state) => state.user)
-  console.log(userData)
   const dispatch = useDispatch()
   const [userName, setUserName] = useState('')
 
@@ -35,7 +34,6 @@ export default function Account() {
 
   async function edit(event, newUserName){
     event.preventDefault()
-    console.log(newUserName)
     const newUserNameJSON = JSON.stringify({userName:newUserName})
     try{
       const sendNewUSerName = await fetch("http://localhost:3001/api/v1/user/profile",{
@@ -46,7 +44,6 @@ export default function Account() {
         },
         body: newUserNameJSON
       })
-      console.log(sendNewUSerName)
       dispatch(editUserName(newUserName))
     }catch(error){
       console.log(error.message)
