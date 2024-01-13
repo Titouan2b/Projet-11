@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import "./account.scss"
 import { useDispatch, useSelector } from 'react-redux'
 import { addUserData, editUserName } from '../../redux/reducers/userSlice'
-import { useEffect } from 'react'
 
 
 export default function Account() {
@@ -36,7 +35,7 @@ export default function Account() {
     event.preventDefault()
     const newUserNameJSON = JSON.stringify({userName:newUserName})
     try{
-      const sendNewUSerName = await fetch("http://localhost:3001/api/v1/user/profile",{
+      const sendNewUserName = await fetch("http://localhost:3001/api/v1/user/profile",{
         method: "POST",
         headers: {
           "Content-Type" : "application/json",
@@ -44,6 +43,7 @@ export default function Account() {
         },
         body: newUserNameJSON
       })
+      console.log(sendNewUserName)
       dispatch(editUserName(newUserName))
     }catch(error){
       console.log(error.message)

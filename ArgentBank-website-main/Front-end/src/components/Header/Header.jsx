@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./header.scss"
 import ArgentBankLogo from "./../../assets/img/argentBankLogo.png"
 import { Link } from 'react-router-dom'
@@ -7,8 +7,6 @@ import { deleteData } from '../../redux/reducers/userSlice'
 
 
 export default function Header() {
-    const [login, setLogin] = useState(true)
-    const [logout, setLogout] = useState(false)
     const token = useSelector((state) => state.auth.token)
     const userData = useSelector((state) => state.user)
     const dispatch = useDispatch()
